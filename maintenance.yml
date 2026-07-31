@@ -1,0 +1,33 @@
+---
+- name: E-GLOBAL | Windows Preventive Maintenance
+  hosts: windows
+  gather_facts: false
+
+  vars_files:
+    - ../vars/defaults.yml
+
+  tasks:
+
+    - name: 01 - Validar conectividad
+      import_tasks: ../tasks/connectivity.yml
+
+    - name: 02 - Información del sistema
+      import_tasks: ../tasks/system_info.yml
+
+    - name: 03 - Espacio en disco
+      import_tasks: ../tasks/disk.yml
+
+    - name: 04 - Limpieza
+      import_tasks: ../tasks/cleanup.yml
+
+    - name: 05 - Servicios
+      import_tasks: ../tasks/services.yml
+
+    - name: 06 - Eventos
+      import_tasks: ../tasks/events.yml
+
+    - name: 07 - Actualizaciones
+      import_tasks: ../tasks/updates.yml
+
+    - name: 08 - Resumen
+      import_tasks: ../tasks/summary.yml
